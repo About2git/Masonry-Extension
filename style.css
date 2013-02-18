@@ -1,0 +1,265 @@
+/*
+Name: Masonry Layout
+Description: Displays Featured Image, Post Title and Excerpt in a Masonry (Pinterest-like) layout.
+Put Together By: Sridhar Katakam, http://WebsiteSetupPro.com/
+*/
+
+/**************************************
+	Global IE Fixes
+**************************************/
+/*#ie6 .masonry-post-wrap,
+#ie7 .masonry-post-wrap {
+	display: block;
+	float: left;
+	height: 360px;
+}*/
+/**************************************
+	IE6 Fixes
+**************************************/
+/*#ie6 .masonry-post-wrap {
+	width: 31%;
+}*/
+/**************************************
+	IE7 Fixes
+**************************************/
+/*#ie7 .masonry-post-wrap {
+	width: 33%;
+}*/
+
+/* Custom styles by Sridhar */
+
+.builder-module-content .hentry {
+	background: #FFF;
+
+    width: 268px; /* This determines the number of columns */
+
+    /*width: 268px;*/ /* For 3 columns in most child themes other than those tested in and mentioned below */
+    /*width: 267px;*/ /* For 3 columns when using City Church */
+    /*width: 265px;*/ /* For 3 columns when using Foundation series or Gallery Church or Americana series */
+    /*width: 262px;*/ /* For 3 columns when using Ionic series */
+    /*width: 249px;*/ /* For 3 columns when using Resume series */
+    /*width: 280px;*/ /* For 3 columns when using Avail or Redbud or Threads or Thrifty */
+    /*width: 422px;*/ /* For 2 columns */
+    /* All the above is assuming that layout width is 960px and that padding for ".builder-module-content .builder-module-element" is unmodified from its default value. */
+    /* Formula for width: [Available width (after padding) of content module's element / number of columns] - 40 */
+
+    padding: 10px;
+    margin: 10px;
+	overflow: hidden;
+	border: none;
+
+    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.entry-image {
+	border: none;
+	/*-webkit-box-shadow: #777777 0 15px 15px -20px;
+	-moz-box-shadow: #777777 0 15px 15px -20px;
+	box-shadow: #777777 0 15px 15px -20px;
+	margin-bottom: 20px;*/
+}
+
+.masonry-brick img {
+	border: none;
+	padding: 0;
+	margin-bottom: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+.entry-title {
+	text-transform: uppercase;
+	font-size: 22px;
+	letter-spacing: normal;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	overflow: hidden;
+	border: none;
+	line-height: 1;
+	padding: 0;
+	float: none;
+}
+
+.entry-title a {
+	-webkit-transition:  all .2s linear;
+	-moz-transition:  all .2s linear 0s;
+}
+
+.builder-module-content .entry-header {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.hentry .entry-header .entry-meta {
+	margin-bottom: 1em;
+	font-size: 12px;
+	display: block;
+	color: #919191;
+	line-height: 1;
+
+	padding: 0;
+	border: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: none;
+
+	/*padding: 5px 0;
+	border-top: 1px solid #FAFAFA;
+	border-bottom: 1px solid #E1E1E1;
+	-moz-box-shadow: #FAFAFA 0 1px, #E1E1E1 0 -1px;
+	-webkit-box-shadow: #FAFAFA 0 1px, #E1E1E1 0 -1px;
+	box-shadow: #FAFAFA 0 1px, #E1E1E1 0 -1px;*/
+}
+
+.hentry .entry-meta a {
+	font-style: italic;
+}
+
+.the_date {
+	padding: 0;
+}
+
+.entry-header .comments {
+	background: none;
+	padding: 0;
+}
+
+.masonry-brick .entry-content {
+	margin-top: 0;
+	font-size: 12px;
+}
+
+.masonry-brick p {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+.masonry-brick .entry-footer {
+	margin-bottom: 0;
+	border-top: none;
+	padding-top: 0;
+}
+
+.masonry-brick .entry-footer .entry-meta {
+	margin-bottom: 0;
+}
+
+.entry-content a.more-link {
+	color: #5096CB;
+	background: none;
+	padding: 0;
+	-webkit-transition:  all .2s linear;
+	-moz-transition:  all .2s linear 0s;
+	text-decoration: underline;
+	border: none;
+	text-shadow: none;
+	font-size: 12px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	float: right;
+}
+
+.entry-content a.more-link:hover {
+	background: none;
+	color: #5B7E39;
+	text-shadow: none;
+	border: none;
+}
+
+/**** Transitions ****/
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+
+.masonry-brick:hover {
+	background: #eefbe6 url("images/debut_light.png");
+
+	/*uncomment these and comment out the ones below for a subtle light gray shadow*/
+/*	box-shadow:0px 0px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow:0px 0px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0px 0px 3px rgba(0,0,0,0.5);*/
+
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	-moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	-webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+
+}
+
+/*.masonry .masonry-brick {
+	-webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}*/
+
+.hentry img {
+    -moz-box-sizing: border-box;
+    height: auto !important;
+    max-width: 100%;
+}
+
+.builder-module-content .hentry:after {
+	background-image: none;
+	content: none;
+}
+
+.entry-header .post-edit-link {
+	background: none;
+	border: none;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	padding: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	line-height: 1;
+}
+
+/* Infinite Scroll loader */
+#infscr-loading {
+  text-align: center;
+  z-index: 100;
+  position: fixed;
+  left: 45%;
+  bottom: 40px;
+  width: 200px;
+  padding: 10px;
+  background: #000;
+  opacity: 0.8;
+  color: #FFF;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+}
